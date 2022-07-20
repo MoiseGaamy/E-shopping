@@ -5,13 +5,18 @@
   "main": "index.js",
   "author": "Gaamy",
   "license": "MIT",
+  "engines": {            
+    "node": "16.14.0",     
+    "yarn": "1.22.11"         
+    },
   "scripts": {
     "start": "node Backend/index.js",
     "dev": "set NODE_ENV=development && nodemon Backend/index.js",
     "prod": "set NODE_ENV=production && nodemon Backend/index.js",
     "seeder": "node Backend/utils/seeder.js",
-    "heroku-postbuild":"YARN_PRODUCTION=false && yarn --prefix Frontend && yarn build --prefix Frontend"
+    "heroku-postbuild":"YARN_PRODUCTION=false && yarn --prefix Frontend && yarn serve build --prefix Frontend"
   },
+  
   "dependencies": {
     "@stripe/react-stripe-js": "^1.9.0",
     "@stripe/stripe-js": "^1.32.0",
@@ -30,8 +35,5 @@
     "nodemailer": "^6.7.5",
     "stripe": "^9.10.0",
     "validator": "^13.7.0"
-  },
-  "engines": {
-    "node": "16.14.0"
   }
 }
