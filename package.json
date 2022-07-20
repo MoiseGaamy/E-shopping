@@ -11,10 +11,10 @@
     },
   "scripts": {
     "start": "node Backend/index.js",
-    "dev": "set NODE_ENV=development&& nodemon Backend/index.js",
-    "prod": "set NODE_ENV=production&& nodemon Backend/index.js",
+    "dev": "set NODE_ENV=development && nodemon Backend/index.js",
+    "prod": "set NODE_ENV=production && nodemon Backend/index.js",
     "seeder": "node Backend/utils/seeder.js",
-    "heroku-postbuild":"YARN_PRODUCTION=false && yarn --prefix Frontend && yarn run build --prefix Frontend"
+    "heroku-postbuild":"YARN_PRODUCTION=false && yarn add --prefix Frontend && yarn run build --prefix Frontend"
   },
   
   "dependencies": {
