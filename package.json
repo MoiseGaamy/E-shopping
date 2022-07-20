@@ -10,7 +10,7 @@
     "dev": "set NODE_ENV=development && nodemon Backend/index.js",
     "prod": "set NODE_ENV=production && nodemon Backend/index.js",
     "seeder": "node Backend/utils/seeder.js",
-    "heroku-postbuild":"YARN_PRODUCTION=false && yarn --prefix Frontend && yarn serve build --prefix Frontend"
+    "heroku-postbuild":"YARN_PRODUCTION=false && yarn --prefix Frontend && yarn build --prefix Frontend"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^1.9.0",
