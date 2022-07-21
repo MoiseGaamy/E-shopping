@@ -28,7 +28,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) =>
             url:result.secure_url
         }
     })
-
+    
     //generate json webToken
     sendToken(user,200,res)
 })
