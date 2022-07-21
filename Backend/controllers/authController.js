@@ -4,7 +4,7 @@ const catchAsyncErrors = require('../middleware/catchAsyncErrors.js');
 const sendToken = require('../utils/jwtToken.js');
 const sendEmail = require('../utils/sendEmail.js');
 const crypto = require('crypto');
-const cloudinary = require('cloudinary').v2;
+const cloudinary = require('cloudinary');
 
 
 // register user : /api/v1/register
@@ -15,7 +15,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) =>
     {
         return next(new ErrorHandler('avatar does not exist',404))
     }
-    const result = await cloudinary.uploader.upload(req.body.avatar, {upload_preset:"e-shop" }, function (error, result) { console.log(result,error) })
+    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {upload_preset:"e-shop" }, function (error, result) { console.log(result,error) })
      
     const { name, email, password } = req.body;
 
@@ -189,9 +189,9 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) =>
 
         const image_id = getUser.avatar.public_id;
 
-        const detroyImage = await cloudinary.uploader.destroy(image_id)
+        const detroyImage = await cloudinary.v2.uploader.destroy(image_id)
 
-        const updateAgain = await cloudinary.uploader.upload(req.body.avatar, { upload_preset: "e-shop" }, function (error, result) { console.log(result, error) })
+        const updateAgain = await cloudinary.v2.uploader.upload(req.body.avatar, { upload_preset: "e-shop" }, function (error, result) { console.log(result, error) })
         
         newUserData.avatar = {
             public_id: updateAgain.public_id,
@@ -275,7 +275,7 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) =>
     //Remove avatar from cloundinary 
     const image_id = user.avatar.public_id;
 
-        const detroyImage = await cloudinary.uploader.destroy(image_id)
+        const detroyImage = await cloudinary.v2.uploader.destroy(image_id)
 
     await user.remove()
 
