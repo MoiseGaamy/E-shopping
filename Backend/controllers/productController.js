@@ -21,7 +21,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) =>
     let imagesLink = [];
     for (let i = 0; i < images.length; i++)
     {
-        const result = await cloudinary.v2.uploader.upload(images[i], { upload_preset: "e-shop" })
+        const result = await cloudinary.v2.uploader.unsigned_upload(images[i],"e-shop", {cloud_name:process.env.CLOUDINARY_CLOUD_NAME }, function (error, result) { console.log(result,error) })
         imagesLink.push({
             public_id: result.public_id,
             url: result.secure_url
@@ -117,7 +117,7 @@ exports.UpdateProduct = catchAsyncErrors( async (req,res, next) =>
        let imagesLink = [];
        for (let i = 0; i < images.length; i++)
        {
-           const result = await cloudinary.v2.uploader.upload(images[i], { upload_preset: "e-shop" })
+           const result = await await cloudinary.v2.uploader.unsigned_upload(images[i],"e-shop", {cloud_name:process.env.CLOUDINARY_CLOUD_NAME }, function (error, result) { console.log(result,error) })
            imagesLink.push({
                public_id: result.public_id,
                url: result.secure_url
