@@ -15,7 +15,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) =>
     {
         return next(new ErrorHandler('avatar does not exist',404))
     }
-    const result = await cloudinary.v2.uploader.unsigned_upload(req.body.avatar,"e-shop", {cloud_name:process.env.CLOUDINARY_CLOUD_NAME }, function (error, result) { console.log(result,error) })
+    const result = await cloudinary.v2.uploader.unsigned_upload(req.body.avatar, "e-shop",{cloud_name:process.env.CLOUDINARY_CLOUD_NAME }, function (error, result) { console.log(result,error) })
      
     const { name, email, password } = req.body;
 
@@ -191,7 +191,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) =>
 
         const detroyImage = await cloudinary.v2.uploader.destroy(image_id)
 
-        const updateAgain = await cloudinary.v2.uploader.unsigned_upload(req.body.avatar,"e-shop", {cloud_name:process.env.CLOUDINARY_CLOUD_NAME }, function (error, result) { console.log(result,error) })
+        const updateAgain = await cloudinary.v2.uploader.upload(req.body.avatar, { upload_preset: "e-shop" }, function (error, result) { console.log(result, error) })
         
         newUserData.avatar = {
             public_id: updateAgain.public_id,
