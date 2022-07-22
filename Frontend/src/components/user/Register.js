@@ -36,13 +36,13 @@ const Register = () =>
     {
         e.preventDefault();
            
-        // const formData = new FormData()
-        // formData.append('name',name)
-        // formData.append('email',email)
-        // formData.append('password',password)
-        // formData.append('avatar',avatar)
-        const newUser = {name,email,password,avatar}
-        dispatch(register(newUser))
+        const formData = new FormData()
+        formData.append('name',name)
+        formData.append('email',email)
+        formData.append('password',password)
+        formData.append('avatar',avatar)
+        // const newUser = {name,email,password,avatar}
+        dispatch(register(formData))
         
     }
 
@@ -70,7 +70,7 @@ const Register = () =>
            <div className="container container-fluid">
                 <div className="row wrapper">
                 <div className="col-10 col-lg-5">
-                <form className="shadow-lg" onSubmit={handleSubmit} >
+                <form className="shadow-lg" encType='multipart/form-data' onSubmit={handleSubmit} >
                     <h1 className="mb-3">Register</h1>
 
                     <div className="form-group">
