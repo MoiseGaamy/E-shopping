@@ -22,6 +22,16 @@ app.use(fileUpload())
 
 
 
+app.use(function (req, res, next)
+{
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header("Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
+
 //Import all Routes
 const products = require('./routes/product.js')
 const auth = require('./routes/auth.js')
