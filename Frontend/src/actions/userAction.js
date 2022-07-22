@@ -76,7 +76,7 @@ export const register = (userData) => async (dispatch) =>
         
         const config = {
            headers: {
-            'content-type': 'multipart/form-data'
+            'content-type': 'application/json'
         }
         }
 
