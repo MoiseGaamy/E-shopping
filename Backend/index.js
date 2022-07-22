@@ -21,7 +21,8 @@ cloudinary.config({
   api_key:process.env.CLOUDINARY_CLOUD_API_KEY,  
   api_secret: process.env.CLOUDINARY_CLOUD_API_SECRET,
 })
-
+cloudinary.utils.api_sign_request(
+  {public_id: "sample", version: "1312461204"}, process.env.CLOUDINARY_CLOUD_API_SECRET)
 //connect database
 connectDatabase()
 
